@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link id='favicon' rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-png">
+    <title>Portfolio | Sajjad Ali</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .skills {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .containers {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .h {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .h span {
+            color: #4e6bff;
+        }
+
+        .skill-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .skill-item i {
+            font-size: 1.5rem;
+            color: #4e6bff;
+        }
+
+        .skill-item span {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, #4e6bff, #6a4eff);
+            border-radius: 4px;
+        }
+
+        /* Tablet View */
+        @media (max-width: 992px) {
+            .skill-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .h {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .skill-categories {
+                display: flex;
+                overflow-x: auto;
+                gap: 20px;
+                padding-bottom: 25px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                grid-template-columns: unset;
+            }
+            
+            .category {
+                min-width: 85%;
+                scroll-snap-align: start;
+                flex-shrink: 0;
+            }
+            
+            .h {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Custom scrollbar for mobile */
+        @media (max-width: 768px) {
+            .skill-categories::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .skill-categories::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
+            }
+            
+            .skill-categories::-webkit-scrollbar-thumb {
+                background: #4e6bff;
+                border-radius: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header/Navbar -->
+    <header>
+        <a href="index.html" class="logo">Sajjad</a>
+        <div id="menu" class="fas fa-bars"></div>
+        <nav class="navbar">
+            <ul>
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#education">Education</a></li>
+                <li><a class="nav-link" href="#skills">Skills</a></li>
+                <li><a class="nav-link" href="#project">Projects</a></li>
+                <li><a class="nav-link" href="#experience">Experience</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+                <li><button class="btn"><a href="resume/resume.pdf" download="Sajjad_Resume" style="color:white">Download CV</a></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="image">
+            <img class="tilt" src="./assets/images/sajjad.png" alt="Sajjad Ali">
+        </div>
+        <div class="content">
+            <h2>Hi There,<br/> I'm <span class="name-highlight">Sajjad Ali</span></h2>
+            <p>I am a <span class="typing-text"></span></p>
+            <a href="#about" class="btn explore-btn"><span>Explore My World</span></a>
+            <div class="socials">
+                <ul class="social-icons">
+                    <li><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/sajjadali116" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a class="github" aria-label="GitHub" href="https://github.com/sajjad-ali-01" target="_blank"><i class="fab fa-github"></i></a></li>
+                    <li><a href="mailto:sajjad.218ali@gmail.com" class="fas fa-envelope" aria-label="Mail" target="_blank"></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="h">About <span>Me</span></h2>
+        <div class="row">
+            <div class="content">
+                <h3>I'm Sajjad Ali</h3>
+                <span class="tag">Software Engineer</span>
+                <p>Currently pursuing a BS in Computer Science at Riphah International University, Lahore. With a foundation in Flutter, Python, Android development, and AI, I have developed multiple projects. I am passionate about leveraging modern technologies to solve real-world problems, as seen in my internships and project management roles. I am committed to continuous learning and have earned certifications in AI, AWS Cloud, and network security.</p>
+                
+                <div class="info-grid">
+                    <div class="info-box">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <p><span>Age:</span> 22</p>
+                            <p><span>Phone:</span> +92 324--6622087</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><span>Email:</span> sajjad.218ali@gmail.com</p>
+                            <p><span>Location:</span> Lahore, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resumebtn">
+                    <a href="resume/resume.pdf" download="Sajjad_Resume" class="btn"><span>Download Resume</span><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="image">
+                <img class="tilt" src="./assets/images/sajjad2.jpg" alt="Sajjad Ali">
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <h1 class="h">My <span>Education</span></h1>
+        <p class="qoute">Education is not the learning of facts, but the training of the mind to think.</p>
+        <div class="box-container">
+            <div class="box" data-aos="fade-up">
+                <div class="image">
+                    <img src="./assets/images/educat/University.jpg" alt="University">
+                </div>
+                <div class="content">
+                    <h3>Bachelor of Computer Science</h3>
+                    <p>RIPHAH INTERNATIONAL University | Lahore</p>
+                    <h4>2021-2025 | Pursuing</h4>
+                    <p class="description">Specializing in Software Development with coursework in Android development, Machine Learning, and Python.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-delay="200">
+                <div class="image">
+                    <img src="./assets/images/educat/college.jpg" alt="College">
+                </div>
+                <div class="content">
+                    <h3>Intermediate Education</h3>
+                    <p>Punjab Group of colleges | Lahore</p>
+                    <h4>Completed | 11-12 Class</h4>
+                    <p class="description">FSc Pre Engineering 2019-2021</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-delay="400">
+                <div class="image">
+                    <img src="./assets/images/educat/school.png" alt="School">
+                </div>
+                <div class="content">
+                    <h3>Secondary Education</h3>
+                    <p>Govt. High School arrayan | Lahore</p>
+                    <h4>Completed | Matric</h4>
+                    <p class="description">2019</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Updated Skills Section -->
+<section class="skills" id="skills">
+        <h2 class="h"> Skills & <span>Abilities</span></h2>
+        <div class="containers">
+            <div class="skill-categories">
+                <!-- Frontend Development -->
+                <div class="category" data-aos="fade-up">
+                    <h3>Programming Languages & Frameworks</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Flutter (App Dvelopment) </span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Dart</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                       <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Development -->
+                <div class="category" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Databases</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>Oracle</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MongoDB</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-fire"></i>
+                            <span>Firebase</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Programming Languages -->
+                <div class="category" data-aos="fade-up">
+                    <h3>Concepts & Soft Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Data Structures & Algorithms</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comment-dots"></i>
+                            
+                            <span>Project Documentation & Management</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Networking & Cloud Computing</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Communication & Leadership</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-comment"></i>
+                            <span>Critical Thinking</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools & Technologies -->
+                <div class="category" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-android"></i>
+                            <span>Android Studio</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-terminal"></i>
+                            <span>VS Code</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                    <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Jupyter</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                            <i class=""></i>
+                            <span>intelij</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- New Certifications Section -->
+<section class="certifications" id="certifications">
+    <h2 class="h">My <span>Certifications</span></h2>
+    <p class="qoute">Certifications validate my skills and commitment to continuous learning.</p>
+    
+    <div class="cert-list">
+        <!-- Certification 1 -->
+        <div class="cert-item" data-aos="fade-up">
+            <div class="cert-info">
+                <h3>AWS Academy Cloud Architecting	(AWS)</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">AWS training and certifications</span>
+                    <span class="cert-date">January 2025</span>
+                </div>
+                <p class="cert-desc">Completed AWS Cloud Architecting training focused on designing secure, scalable, and cost-effective cloud solutions using core AWS services.</p>
+            </div>
+            <a href="https://www.credly.com/badges/978ac02c-631f-4eb7-8581-5d6c44a85843/public_url" class="btn view-btn">View</a>
+        </div>
+        
+        <!-- Certification 2 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="cert-info">
+                <h3>Introduction to Artificial Intelligence</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Coursera</span>
+                    <span class="cert-date">May 2024</span>
+                </div>
+                <p class="cert-desc">Completed foundational AI training covering machine learning basics, and intelligent agent design using Python.</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/BDRQBGWWW6VY" class="btn view-btn">View</a>
+        </div>
+        
+        <!-- Certification 3 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="cert-info">
+                <h3>Site Reliability Engineering: Measuring and Managing Reliability </h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Google Cloud</span>
+                    <span class="cert-date">May 2024</span>
+                </div>
+                <p class="cert-desc">Learned key SRE principles including SLIs, SLOs, and error budgets to measure and manage system reliability effectively.</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/7MER4Q8HH8JS" class="btn view-btn">View</a>
+        </div>
+        <!-- Certification 3 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="cert-info">
+                <h3>Developing a Google SRE Culture </h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Google Cloud</span>
+                    <span class="cert-date">May 2024</span>
+                </div>
+                <p class="cert-desc">Explored Google's SRE culture, focusing on aligning development and operations through SLIs, SLOs, and error budget policies.</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/2DHUZT7ME3UU" class="btn view-btn">View</a>
+        </div>
+        <!-- Certification 4 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="cert-info">
+                <h3>Connect and Protect Networks and Network</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Google (Coursera)</span>
+                    <span class="cert-date">November 2023</span>
+                </div>
+                <p class="cert-desc">Gained hands-on experience with networking fundamentals and secure network design</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/AZS8AALGWZFF" class="btn view-btn">View</a>
+        </div>
+        <!-- Certification 5 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="cert-info">
+                <h3>Oracle SQL Databases Specialization</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">LearnQuest (Coursera)</span>
+                    <span class="cert-date">May 2023</span>
+                </div>
+                <p class="cert-desc">Gained hands-on experience in writing SQL queries, managing Oracle databases, and performing data manipulation and retrieval tasks.</p>
+            </div>
+            <a href="https://coursera.org/share/a82e28bcc7f640c624bf5bd2ff99b30f" class="btn view-btn">View</a>
+        </div>
+        <!-- Certification 6 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="cert-info">
+                <h3>Ordered Data Structures</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Coursera</span>
+                    <span class="cert-date">December 2022</span>
+                </div>
+                <p class="cert-desc">Studied and implemented ordered data structures such as lists, stacks, queues, trees, and their applications in efficient algorithm design.</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/PKFP942LTC2A" class="btn view-btn">View</a>
+        </div>
+        <!-- Certification 6 -->
+        <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="cert-info">
+                <h3>Object Oriented Programing</h3>
+                <div class="cert-meta">
+                    <span class="cert-issuer">Coursera</span>
+                    <span class="cert-date">June 2022</span>
+                </div>
+                <p class="cert-desc">Learned core OOP concepts such as classes, inheritance, polymorphism, and encapsulation through practical coding exercises.</p>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/EKNXAYJRQZ32" class="btn view-btn">View</a>
+        </div>
+    </div>
+</section>   
+    <!-- Projects Section -->
+    <section class="project" id="project">
+        <h2 class="h">Projects <span>Portfolio</span></h2>
+        <div class="project-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+        </div>
+        
+        <div class="project-container">
+            <div class="project-box" data-category="app" data-aos="zoom-in">
+    <div class="project-image">
+        <div class="mobile-frame">
+            <img src="./assets/images/projects/carecub.png" alt="Care Cub Mobile App Screenshot">
+        </div>
+        <div class="project-overlay">
+            <h3>Care Cub AI Integrated Mobile APP (FYP Project)</h3>
+            <p>Flutter, Dart, Firebase, Python, AI</p>
+            <div class="project-links">
+                <a href="https://github.com/sajjad-ali-01/Care-Cub" class="project-link"><i class="fas fa-link"></i></a>
+                <a href="https://github.com/sajjad-ali-01/Care-Cub" class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>Care Cub AI Integrated Mobile APP (FYP Project)</h3>
+        <p>CareCub is an AI-powered mobile app for infant care, featuring cry reason prediction, personalized health tips, smart reminders, vaccination tracking, and doctor appointments. Built with Flutter and Firebase, it offers real-time support and a user-friendly experience, along with a vibrant parent community.</p>
+    </div>
+</div>
+<div class="project-box" data-category="system" data-aos="zoom-in" data-aos-delay="400">
+                <div class="project-image">
+                    <img src="./assets/images/projects/auto.jpg" alt="Student Management System">
+                    <div class="project-overlay">
+                        <h3>Auto Price predicter AI</h3>
+                        <p>C++, OOP Concepts</p>
+                        <a href="https://github.com/sajjad-ali-01/Car-Price-Predictor-Ai" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Car-Price-Predictor-Ai" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Auto Price predicter AI</h3>
+                    <p>Console application demonstrating object-oriented programming principles.</p>
+                </div>
+            </div>
+            <div class="project-box" data-category="web" data-aos="zoom-in">
+                <div class="project-image">
+                    <img src="./assets/images/projects/Interior.png" alt="Interior Design Website">
+                    <div class="project-overlay">
+                        <h3>Interior Design Website</h3>
+                        <p>HTML, CSS, JavaScript, PHP, MySQL</p>
+                        <a href="https://github.com/sajjad-ali-01/Projects/tree/main/Web%20Projects" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Projects/tree/main/Web%20Projects" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Interior Design Website</h3>
+                    <p>A fully responsive website for an interior design company with admin panel and booking system.</p>
+                </div>
+            </div>
+
+            <div class="project-box" data-category="app" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image">
+                    <img src="./assets/images/projects/food.png" alt="Fast Foods Ordering App">
+                    <div class="project-overlay">
+                        <h3>Fast Foods Ordering App</h3>
+                        <p>Flutter, Dart, Firebase</p>
+                        <a href="https://github.com/sajjad-ali-01/Flutter-Fast-Food-Ordering-App" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Flutter-Fast-Food-Ordering-App" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Fast Foods Ordering App</h3>
+                    <p>Mobile application for food ordering with real-time updates and payment integration.</p>
+                </div>
+            </div>
+              
+                
+            <div class="project-box" data-category="system" data-aos="zoom-in" data-aos-delay="400">
+                <div class="project-image">
+                    <img src="./assets/images/projects/pharmacy.png" alt="Pharmacy Management System">
+                    <div class="project-overlay">
+                        <h3>Pharmacy Management System</h3>
+                        <p>Java Swing, MySQL</p>
+                        <a href="https://github.com/sajjad-ali-01/Pharmacy-Management-System-in-JAVA?tab=readme-ov-file#screenshots" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Pharmacy-Management-System-in-JAVA" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Pharmacy Management System</h3>
+                    <p>Desktop application for managing pharmacy inventory, sales, and customer records.</p>
+                </div>
+            </div>
+            <div class="project-box" data-category="system" data-aos="zoom-in">
+                <div class="project-image">
+                    <img src="./assets/images/projects/6607.jpg" alt="Library Management System">
+                    <div class="project-overlay">
+                        <h3>Library Management System</h3>
+                        <p>C++, Data Structures, Queue, BST, Hashing</p>
+                        <a href="https://github.com/sajjad-ali-01/Library-Management-System-Data-Structure-DSA-" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Library-Management-System-Data-Structure-DSA-" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Library Management System</h3>
+                    <p>Console-based application implementing various data structures for efficient library operations.</p>
+                </div>
+            </div>
+            <div class="project-box" data-category="web" data-aos="zoom-in" data-aos-delay="200">
+                <div class="project-image">
+                    <img src="./assets/images/projects/portfolio.PNG" alt="Personal Portfolio">
+                    <div class="project-overlay">
+                        <h3>Personal Portfolio</h3>
+                        <p>HTML, CSS, JavaScript</p>
+                        <a href="https://github.com/sajjad-ali-01/Portfolio" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="https://github.com/sajjad-ali-01/Portfolio" class="project-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Personal Portfolio</h3>
+                    <p>Responsive portfolio website showcasing skills, projects and contact information.</p>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="view-more">
+            <a href="https://github.com/sajjad-ali-01" class="btn">View More Projects</a>
+        </div>
+    </section>
+ <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <h2 class="h"><i class="fa fa-briefcase"></i> Experience</h2>
+        <div class="timeline">
+            <div class="container left" data-aos="fade-right">
+                <div class="content">
+                    <div class="tag">
+                        <h2>Codsoft</h2>
+                    </div>
+                    <div class="desc">
+                        <h3>Web Developer | Internship</h3>
+                        <p>August 2023 - 4 Weeks</p>
+                        <ul>
+                            <li>Developed responsive web applications using modern frontend technologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container right" data-aos="fade-left" data-aos-delay="200">
+                <div class="content">
+                    <div class="tag">
+                        <h2>Android Development</h2>
+                    </div>
+                    <div class="desc">
+                        <h3>Project Experience</h3>
+                        <ul>
+                         <li>Developed cross-platform mobile apps using Flutter and Dart</li>
+                        <li>Integrated Firebase services for authentication, Firestore, and cloud messaging</li>
+                       <li>Implemented responsive UIs and real-time features for seamless user experiences</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Contact Section -->
+<!-- Replace your existing contact form with this -->
+<section class="contact" id="contact">
+    <h2 class="h"><i class="fa fa-phone-alt"></i> Get in <span>Touch</span></h2>
+    <div class="container">
+        <div class="content">
+            <div class="image-box" data-aos="fade-right">
+                <img draggable="false" src="./assets/images/contact.png" alt="Contact Illustration">
+            </div>
+            <form id="contact-form" data-aos="fade-left">
+                <input type="hidden" name="to_email" value="sajjad.218ali@gmail.com">
+                <div class="form-group">
+                    <div class="field">
+                        <input type="text" name="from_name" placeholder="Name" required>
+                        <i class='fas fa-user'></i>
+                    </div>
+                    <div class="field">
+                        <input type="email" name="from_email" placeholder="Email" required>
+                        <i class='fas fa-envelope'></i>
+                    </div>
+                    <div class="field">
+                        <input type="tel" name="phone" placeholder="Phone">
+                        <i class='fas fa-phone-alt'></i>
+                    </div>
+                    <div class="message">
+                        <textarea placeholder="Message" name="message" required></textarea>
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                </div>
+                <div class="button-area">
+                    <button type="submit">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fa fa-paper-plane"></i></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Sajjad's Portfolio</h3>
+                <p>Thank you for visiting my personal portfolio website. Connect with me over socials. Keep Rising 🚀</p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/sajjadali116" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/sajjad-ali-01" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:sajjad.218ali@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    
+                </div>
+            </div>
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#home"><i class="fas fa-chevron-right"></i> Home</a>
+                <a href="#about"><i class="fas fa-chevron-right"></i> About</a>
+                <a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a>
+                <a href="#education"><i class="fas fa-chevron-right"></i> Education</a>
+                <a href="#project"><i class="fas fa-chevron-right"></i> Projects</a>
+                <a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +92 324-6622087</p>
+                <p><i class="fas fa-envelope"></i> sajjad.218ali@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> | Designed & Built by <a href="https://www.linkedin.com/in/sajjadali116">Sajjad Ali</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
